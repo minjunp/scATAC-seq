@@ -156,31 +156,3 @@ write.csv(obj@meta.data, 'mdata.csv')
 
 # save the object
 save(obj,file='wh_harmony.Robj')
-
------------------------------------
-#predicted.ids
-#P1_r1
-#P1_r2
-#P8_w1_r1
-#P8_w1_r2
-#P8_w2_r2
-cm <- subset(obj, subset = predicted.id == "Cardiomyocytes")
-Idents(cm) <- 'dtype'
-da_cm_genes <- FindMarkers(
-  object = cm,
-  ident.1 = c('P1_r1', 'P1_r2'),
-  ident.2 = c('P8_w1_r1', 'P8_w1_r2', 'P8_w2_r2'),
-  min.pct = 0.2,
-  test.use = 'LR'
-)
-write.csv(da_cm_genes, 'da_cm_genes.csv')
-
-DefaultAssay(cm) <- 'peaks'
-da_cm_genes <- FindMarkers(
-  object = cm,
-  ident.1 = c('P1_r1', 'P1_r2'),
-  ident.2 = c('P8_w1_r1', 'P8_w1_r2', 'P8_w2_r2'),
-  min.pct = 0.2,
-  test.use = 'LR'
-)
-write.csv(da_cm_genes, 'da_cm_peaks.csv')
