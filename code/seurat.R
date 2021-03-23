@@ -144,6 +144,10 @@ png('wh_harmony_predicted_id.png', width=800, height=600)
 DimPlot(object = obj, group.by = 'predicted.id', repel = TRUE, label = TRUE) + NoLegend()
 dev.off()
 
+pdf('wh_harmony_predicted_id.pdf')
+DimPlot(object = obj, group.by = 'predicted.id', repel = TRUE, label = TRUE) + NoLegend()
+dev.off()
+
 png('wh_harmony_dtype.png', width=800, height=600)
 DimPlot(object = obj, group.by = 'dtype', repel = TRUE, label = TRUE) + NoLegend()
 dev.off()
