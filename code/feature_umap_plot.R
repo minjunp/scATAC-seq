@@ -14,6 +14,10 @@ library(BSgenome.Mmusculus.UCSC.mm10)
 library(EnsDb.Mmusculus.v79)
 set.seed(1234)
 
+# ===================================
+# Useful link: https://satijalab.org/seurat/articles/visualization_vignette.html
+# ===================================
+
 load('./obj/wh_harmony.Robj')
 # Plot a legend to map colors to expression levels
 png('umap_peak_region_fragments.png', width=800, height=600)
@@ -36,7 +40,7 @@ baseplot + labs(title = "P1 & P8 Whole Heart")
 dev.off()
 
 # Use community-created themes, overwriting the default Seurat-applied theme Install ggmin with
-remotes::install_github('sjessa/ggmin')
+#remotes::install_github('sjessa/ggmin')
 png('umap_ggmin_baseplot.png', width=800, height=600)
 baseplot + ggmin::theme_powerpoint()
 dev.off()
