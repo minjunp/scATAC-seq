@@ -1,0 +1,12 @@
+# Load modules
+module load bedtools/2.29.2
+
+# Reference genome
+Genome="/mount/samee/Genomes/mm10_ucsc/mm10.fa"
+
+# List of bedtools for getfasta, or list of DMR files for DMR processing
+Blist="ATAC_peaks.bed"
+
+# Mouse gencode genes
+Genes="/mount/samee/jeff/Ensembl_GRCm38.94/Mus_musculus.GRCm38.94.gtf"
+
