@@ -7,5 +7,5 @@ mkdir -p $WORKDIR
 for f in TEAD* FOX* JUN* ETS* FOS*
 do
 	head -n -4 ${f} | sed '1d' > ${WORKDIR}/${f}
-	python ${BASEDIR}/process_fimo_output.py ${WORKDIR}/${f} ${WORKDIR}/{f}
+	python ${BASEDIR}/process_fimo_output.py ${WORKDIR}/${f} ${WORKDIR}/processed_${f}
 done
