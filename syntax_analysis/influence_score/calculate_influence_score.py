@@ -1,7 +1,9 @@
+import sys
+
 # STEP 2: Join the two data (fimo output + count matrix)
 ## first generate LAcm_atac_count_ver2.csv and PVcm_atac_count_ver2.csv
-def merge_fimo_count(fimo_bed, count_file):
-    fimo = pd.read_csv(fimo_bed, sep='\t', header=None)
+def merge_fimo_count(fimo_input, count_file):
+    fimo = pd.read_csv(fimo_input, sep='\t', header=None)
     count = pd.read_csv(count_file, sep='\t', header=None)
 
     # merge on fimo output
@@ -9,7 +11,7 @@ def merge_fimo_count(fimo_bed, count_file):
     return df
 
 # STEP 3: Calculate influence score for each gene
-def influence_score(merge_df, genes_bed):
+def influence_score(merge_df, genes_bed, output_name):
     genes = pd.read_csv(genes_bed, sep='\t', header=None)
     #print(genes)
     dff = pd.DataFrame()
@@ -65,16 +67,22 @@ def influence_score(merge_df, genes_bed):
 
     dff['gene name'] = gene_names
     dff['influence score'] = gene_scores
+    dff.to_csv(output_name)
 
-    #dff.to_csv('LAcm2_wt_100Kb_gene_influence.csv')
-    dff.to_csv('PVcm2_wt_100Kb_gene_influence.csv')
-    #dff.to_csv('./influence_score/fimo_new/not_divide_by_sequence_length/PVcm_wt_100Kb_gene_influence.csv')
+def main(argv):
+	if argv is None:
+		argv = sys.argv
+	else:
+		argv = argv.split()
 
-### fimo_new.bed: peaks that have PITX2 motif hits
-#LAcm_wt_df = merge_fimo_count('fimo_new.bed', 'LAcm2_wt_atac_count.bed')
-#influence_score(LAcm_wt_df, 'genes_100Kb_flanking_regions.bed')
+	input1 = argv[1] # e.g. 'processed_ETS1_fimo.tsv'
+    input2 = argv[2] # e.g. 'cardiomyocytes_peaks.bed'
 
-PVcm_wt_df = merge_fimo_count('pitx2_occurrence.bed', 'PVcm2_wt_atac_count.bed')
-print(PVcm_wt_df.head())
-sys.exit()
-influence_score(PVcm_wt_df, 'genes_100Kb_flanking_regions.bed')
+    input3 = argv[3] # e.g. 'AllGenes_100kb_flanking_regions_dropped_duplicates.bed'
+    input4 = argv[4] # e.g. 'ETS1_influence_score.csv'
+    merged_df = merge_fimo_count(input1, input2)
+    influence_score(merged_df, input3, input4)
+	return 0
+
+if __name__ == "__main__":
+	sys.exit(main(None))
