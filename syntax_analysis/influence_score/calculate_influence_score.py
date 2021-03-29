@@ -1,4 +1,6 @@
 import sys
+import pandas as pd
+import numpy as np
 
 # STEP 2: Join the two data (fimo output + count matrix)
 ## first generate LAcm_atac_count_ver2.csv and PVcm_atac_count_ver2.csv
@@ -59,7 +61,7 @@ def influence_score(merge_df, genes_bed, output_name):
         df = merge_df[(merge_df[0] == chr) & (merge_df[1] > start) & (merge_df[2] < end)]
         ##try 2: maybe try without peak_length
         ##try 1: try without dividing by accessibility_scores
-        sum_influence_score = np.sum(df.loc[:,'x score'].values)
+        sum_influence_score = np.sum(df.loc[:,'influence score'].values)
 
         gene_names.append(gene)
         gene_scores.append(sum_influence_score)
@@ -70,19 +72,19 @@ def influence_score(merge_df, genes_bed, output_name):
     dff.to_csv(output_name)
 
 def main(argv):
-	if argv is None:
-		argv = sys.argv
-	else:
-		argv = argv.split()
+    if argv is None:
+        argv = sys.argv
+    else:
+        argv = argv.split()
 
-	input1 = argv[1] # e.g. 'processed_ETS1_fimo.tsv'
-    input2 = argv[2] # e.g. 'cardiomyocytes_peaks.bed'
+    input1 = argv[1] # e.g. processed_ETS1_fimo.tsv
+    input2 = argv[2] # e.g. cardiomyocytes_peaks.bed
+    input3 = argv[3] # e.g. AllGenes_100kb_flanking_regions_dropped_duplicates.bed
+    input4 = argv[4] # e.g. ETS1_influence_score.csv
 
-    input3 = argv[3] # e.g. 'AllGenes_100kb_flanking_regions_dropped_duplicates.bed'
-    input4 = argv[4] # e.g. 'ETS1_influence_score.csv'
     merged_df = merge_fimo_count(input1, input2)
     influence_score(merged_df, input3, input4)
-	return 0
+    return 0
 
 if __name__ == "__main__":
 	sys.exit(main(None))
