@@ -36,6 +36,47 @@ P8_count <- Seurat::AverageExpression(P8, slot="counts")
 P8_atac_count <- P8_count[1]
 write.csv(P8_atac_count, "P8_atac_count.csv")
 
+## ============= ##
+Idents(P1) <- "predicted.id"
+Idents(P8) <- "predicted.id"
+P1_cardiomyocytes <- subset(P1, subset = predicted.id == "Cardiomyocytes")
+P8_cardiomyocytes <- subset(P8, subset = predicted.id == "Cardiomyocytes")
+
+P1_cardiomyocytes_count <- Seurat::AverageExpression(P1_cardiomyocytes, slot="counts")
+P1_cardiomyocytes_atac_count <- P1_cardiomyocytes_count[1]
+write.csv(P1_cardiomyocytes_atac_count, "P1_cardiomyocytes_atac_count.csv")
+
+P8_cardiomyocytes_count <- Seurat::AverageExpression(P8_cardiomyocytes, slot="counts")
+P8_cardiomyocytes_atac_count <- P8_cardiomyocytes_count[1]
+write.csv(P8_cardiomyocytes_atac_count, "P8_cardiomyocytes_atac_count.csv")
+
+# --- #
+
+P1_endothelial <- subset(P1, subset = predicted.id == "Endothelial")
+P8_endothelial <- subset(P8, subset = predicted.id == "Endothelial")
+
+P1_endothelial_count <- Seurat::AverageExpression(P1_endothelial, slot="counts")
+P1_endothelial_atac_count <- P1_endothelial_count[1]
+write.csv(P1_endothelial_atac_count, "P1_endothelial_atac_count.csv")
+
+P8_endothelial_count <- Seurat::AverageExpression(P8_endothelial, slot="counts")
+P8_endothelial_atac_count <- P8_endothelial_count[1]
+write.csv(P8_endothelial_atac_count, "P8_endothelial_atac_count.csv")
+
+# --- #
+
+P1_fibroblasts <- subset(P1, subset = predicted.id == "Fibroblasts")
+P8_fibroblasts <- subset(P8, subset = predicted.id == "Fibroblasts")
+
+P1_fibroblasts_count <- Seurat::AverageExpression(P1_fibroblasts, slot="counts")
+P1_fibroblasts_atac_count <- P1_fibroblasts_count[1]
+write.csv(P1_fibroblasts_atac_count, "P1_fibroblasts_atac_count.csv")
+
+P8_fibroblasts_count <- Seurat::AverageExpression(P8_fibroblasts, slot="counts")
+P8_fibroblasts_atac_count <- P8_fibroblasts_count[1]
+write.csv(P8_fibroblasts_atac_count, "P8_fibroblasts_atac_count.csv")
+## ============= ##
+
 cardiomyocytes <- subset(obj, subset = predicted.id == "Cardiomyocytes")
 endothelial <- subset(obj, subset = predicted.id == "Endothelial")
 fibroblasts <- subset(obj, subset = predicted.id == "Fibroblasts")

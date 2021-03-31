@@ -4,6 +4,6 @@ STEP 2-a: IterativeLSI.R
 or
 STEP 2-b: harmony.R
 
-STEP 3: geneScors.R
+STEP 3: geneScores.R
 
 STEP 4: labelTransfer.R

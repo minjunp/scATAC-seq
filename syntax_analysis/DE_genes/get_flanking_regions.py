@@ -2,10 +2,6 @@ import pandas as pd
 import numpy as np
 import sys
 
-df = pd.read_csv('AllGenes_100kb_flanking_regions.bed', sep='\t', header=None)
-df = df.drop_duplicates()
-df.to_csv('AllGenes_100kb_flanking_regions_dropped_duplicates.bed', sep='\t', header=None, index=False)
-sys.exit()
 # STEP 1: get the flanking region of the DE genes
 def flanking_region(DEfile, bedfile, peakfile, threshold, pval_thres, direction):
     """
@@ -76,3 +72,7 @@ flanking_region('DEG_whole_heart_P1_vs_P8_MI_RNA_Fibroblasts.csv', '../data/mm10
 ## Cell-type does not matter anymore...
 flanking_region('DEG_whole_heart_P1_vs_P8_MI_RNA_Cardiomyocytes.csv', '../data/mm10-3.0.0.premrna.tss.TAD.txt',
                 'AllGenes_100kb_flanking_regions.bed', threshold=100000, pval_thres=0.01, direction='up-regulated')
+
+df = pd.read_csv('AllGenes_100kb_flanking_regions.bed', sep='\t', header=None)
+df = df.drop_duplicates()
+df.to_csv('AllGenes_100kb_flanking_regions_dropped_duplicates.bed', sep='\t', header=None, index=False)

@@ -3,7 +3,7 @@
 # Fimo processed files
 fimo_files=$(ls /mount/samee/hali_data/aggr_results_whole_heart/seurat_analysis/syntax_analysis/fimo/fimo_counts/processed*)
 cell_type='cardiomyocytes_peaks.bed'
-allGenes='AllGenes_100kb_flanking_regions_dropped_duplicates.bed'
+allGenes='AllGenes_100kb_flanking_regions_dropped_duplicates_v2.bed'
 
 for fimo_file in ${fimo_files}
   do
