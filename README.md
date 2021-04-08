@@ -29,11 +29,11 @@ STEP 2: ATAC counts (.csv) --> BED format --> FASTA format
 ```
 
 ### preprocess.sh
-* STEP 2: To Be Continued
+```sh
+STEP 2: To Be Continued
+```
 
-
-
-
-
-################## Application Note Paper #######################
+# Usage
+```sh
 Input: ATAC counts, DE genes list
+```
