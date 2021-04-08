@@ -11,15 +11,21 @@ library(patchwork)
 # for integration
 library(GenomicRanges)
 library(harmony)
+library(gridExtra)
 set.seed(1234)
 
 load("LAPV_detailed.Robj")
+# compute TSS enrichment score per cell
+obj <- TSSEnrichment(object = obj, fast = FALSE)
 Idents(obj) <- 'dtype'
 
-library(gridExtra)
 pdf("scATAC_QC.pdf", width=10, height=10, useDingbats=FALSE)
 options(repr.plot.width=10, repr.plot.height=10)
+
 temp_combo <- obj@meta.data
+# Change the order to match colors in scRNA-seq data
+temp_combo$dtype <- factor(temp_combo$dtype, levels=c('LA wt','PV wt','LA mut','PV mut'))
+
 g <- ggplot(temp_combo, aes(x = dtype))
 
 

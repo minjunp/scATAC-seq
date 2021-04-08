@@ -9,4 +9,3 @@ Blist="ATAC_peaks.bed"
 
 # Mouse gencode genes
 Genes="/mount/samee/jeff/Ensembl_GRCm38.94/Mus_musculus.GRCm38.94.gtf"
-
