@@ -28,6 +28,11 @@ obj@meta.data$data[obj@meta.data$dtype == "P8_w1_r2"] <- "P8"
 obj@meta.data$data[obj@meta.data$dtype == "P8_w2_r2"] <- "P8"
 
 Idents(obj) <- "data"
+
+## DE & DAS
+# Up-regulated in P1: Tnni
+# Up-regulated in P8: Actb
+
 ## DE genes for CM
 Actb <- "chr5-142803654-143003654"
 Actc1 <- "chr2-113952887-114152887"
