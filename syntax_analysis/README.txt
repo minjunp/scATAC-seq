@@ -19,7 +19,10 @@
 * STEP 1: Get all the peak information for each TFs from fimo outputs (all .tsv files together)
 
 ### preprocess.sh
-* STEP 2:
+* STEP 2: Find the intersection with all genes (later will be used to split into up- and down-regulated genes)
+
+### step1(DE_0.01).ipynb
+* STEP 3: 
 
 
 
