@@ -71,8 +71,8 @@ flanking_region('DEG_whole_heart_P1_vs_P8_MI_RNA_Fibroblasts.csv', '../data/mm10
 
 ## Cell-type does not matter anymore...
 flanking_region('DEG_whole_heart_P1_vs_P8_MI_RNA_Cardiomyocytes.csv', '../data/mm10-3.0.0.premrna.tss.TAD.txt',
-                'AllGenes_100kb_flanking_regions.bed', threshold=100000, pval_thres=0.01, direction='up-regulated')
+                'AllGenes_200kb_flanking_regions.bed', threshold=200000, pval_thres=0.01, direction='up-regulated')
 
-df = pd.read_csv('AllGenes_100kb_flanking_regions.bed', sep='\t', header=None)
+df = pd.read_csv('AllGenes_200kb_flanking_regions.bed', sep='\t', header=None)
 df = df.drop_duplicates()
-df.to_csv('AllGenes_100kb_flanking_regions_dropped_duplicates.bed', sep='\t', header=None, index=False)
+df.to_csv('AllGenes_200kb_flanking_regions_dropped_duplicates.bed', sep='\t', header=None, index=False)

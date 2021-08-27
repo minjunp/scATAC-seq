@@ -1,3 +1,10 @@
+/syntax_analysis/influence_score
+/syntax_analysis/DE_genes
+/syntax_analysis/count_files
+/differential_test/Coverage_Plot
+/differential_test/link_DE_DA
+/syntax_analysis/tiled_heatmap/ETS1_outs
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
